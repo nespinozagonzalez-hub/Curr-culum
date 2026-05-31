@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicolás Espinoza | GamiAula</title>
+<meta name="description" content="Profesor de Ciencias, diseñador de experiencias gamificadas y fundador de GamiAula. Especialista en ABJ, neuroeducación e IA aplicada a educación.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   VARIABLES Y RESET
+═══════════════════════════════════════════ */
+:root {
+  --purple:   #7C3A93;
+  --purple-d: #5c2a6e;
+  --purple-l: #9b55b0;
+  --lila:     #F3E8F7;
+  --blue:     #1E88C8;
+  --blue-d:   #1568a0;
+  --orange:   #F39C12;
+  --yellow:   #F7C948;
+  --green:    #46B96C;
+  --dark:     #26223A;
+  --mid:      #4a455e;
+  --muted:    #7a748e;
+  --white:    #ffffff;
+  --bg:       #fafafa;
+  --bg2:      #F3E8F7;
+  --border:   rgba(124,58,147,0.12);
+  --shadow:   0 4px 24px rgba(124,58,147,0.10);
+  --shadow-lg:0 8px 48px rgba(124,58,147,0.16);
+  --radius:   14px;
+  --radius-lg:22px;
+  --font-h: 'Syne', sans-serif;
+  --font-b: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-b);
+  background: var(--bg);
+  color: var(--dark);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════
+   TIPOGRAFÍA
+═══════════════════════════════════════════ */
+h1,h2,h3,h4 { font-family: var(--font-h); line-height: 1.2; }
+h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 700; }
+h3 { font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 600; }
+h4 { font-size: 1rem; font-weight: 600; }
+p  { font-size: 0.97rem; color: var(--mid); }
+
+/* ═══════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--lila);
+  box-shadow: 0 2px 20px rgba(124,58,147,0.08);
+}
+
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px;
+}
+
+.navbar-brand {
+  font-family: var(--font-h);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--dark);
+  white-space: nowrap;
+  padding: 14px 0;
+  margin-right: 16px;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.navbar-brand span { color: var(--purple); }
+
+/* Wrapper de navegación con indicador de scroll */
+.nav-tabs-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+/* Gradiente derecha — hint de más tabs */
+.nav-tabs-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 48px; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.95));
+  pointer-events: none;
+  z-index: 2;
+}
+/* Icono chevron derecha */
+.nav-tabs-wrapper::before {
+  content: '›';
+  position: absolute;
+  right: 6px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--purple);
+  font-size: 1.2rem;
+  font-weight: 700;
+  pointer-events: none;
+  z-index: 3;
+  line-height: 1;
+  opacity: 0.7;
+}
+/* Ocultar hint en desktop cuando hay espacio */
+@media (min-width: 900px) {
+  .nav-tabs-wrapper::after,
+  .nav-tabs-wrapper::before { display: none; }
+}
+
+.nav-tab {
+  padding: 7px 16px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--mid);
+  font-family: var(--font-b);
+  font-size: 0.84rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .16s ease, color .16s ease;
+  outline: none;
+  letter-spacing: 0.01em;
+}
+.nav-tab:hover { background: var(--lila); color: var(--purple); }
+.nav-tab.active {
+  background: var(--purple);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* nav-tabs dentro del wrapper */
+.nav-tabs {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 8px 4px;
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
+
+/* Franja hint debajo de navbar en móvil */
+.nav-hint {
+  display: none;
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding: 3px 0;
+  background: rgba(243,232,247,0.55);
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.04em;
+}
+@media (max-width: 899px) {
+  .nav-hint { display: block; }
+}
+
+/* ═══════════════════════════════════════════
+   SECCIONES (TABS)
+═══════════════════════════════════════════ */
+.tab-section { display: none; }
+.tab-section.active { display: block; }
+
+/* ═══════════════════════════════════════════
+   HERO / INICIO
+═══════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #fdf6ff 0%, #fff 40%, #f0f8ff 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 60px 20px 80px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(124,58,147,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(30,136,200,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--lila);
+  color: var(--purple);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 99px;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+.hero-badge::before { content: '🎮'; }
+
+.hero-name {
+  font-family: var(--font-h);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  color: var(--dark);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 6px;
+}
+.hero-name .accent { color: var(--purple); }
+.hero-name .brand  { color: var(--orange); }
+
+.hero-role {
+  font-family: var(--font-b);
+  font-size: 1.05rem;
+  color: var(--blue);
+  font-weight: 500;
+  margin-bottom: 24px;
+  letter-spacing: 0.01em;
+}
+.hero-role span { color: var(--mid); }
+
+.hero-desc {
+  font-size: 1.1rem;
+  color: var(--mid);
+  line-height: 1.75;
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+.hero-desc strong { color: var(--dark); font-weight: 600; }
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* CARD LATERAL */
+.hero-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 32px 28px;
+  border: 2px solid var(--lila);
+  position: relative;
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--purple), var(--blue), var(--orange));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.hero-card-title {
+  font-family: var(--font-h);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--purple);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.hero-card-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  color: var(--mid);
+}
+.hero-card-item .ico {
+  width: 28px; height: 28px;
+  background: var(--lila);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+}
+.hero-card-item strong { color: var(--dark); display: block; font-size: 0.82rem; margin-bottom: 1px; }
+
+/* ═══════════════════════════════════════════
+   BOTONES — SISTEMA FORMAL
+═══════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  font-family: var(--font-b);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .18s ease, color .18s ease, box-shadow .18s ease, border-color .18s ease;
+  outline: none;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.btn:focus-visible { outline: 3px solid rgba(124,58,147,0.35); outline-offset: 3px; }
+
+/* Primario — morado sólido */
+.btn-primary {
+  background: var(--purple);
+  color: #fff;
+  border-color: var(--purple);
+}
+.btn-primary:hover {
+  background: var(--purple-d);
+  border-color: var(--purple-d);
+  box-shadow: 0 4px 16px rgba(124,58,147,0.22);
+}
+
+/* Secundario outline — morado */
+.btn-outline {
+  background: transparent;
+  border-color: var(--purple);
+  color: var(--purple);
+}
+.btn-outline:hover { background: var(--purple); color: #fff; }
+
+/* Acción secundaria suave — lila */
+.btn-ghost {
+  background: var(--lila);
+  color: var(--purple);
+  border-color: rgba(124,58,147,0.18);
+}
+.btn-ghost:hover { background: #e8d4f2; border-color: rgba(124,58,147,0.3); }
+
+/* Azul — para acciones de portafolio/recursos */
+.btn-blue {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+.btn-blue:hover { background: var(--blue-d); border-color: var(--blue-d); box-shadow: 0 4px 16px rgba(30,136,200,0.22); }
+
+/* Outline azul — para "abrir en nueva pestaña" */
+.btn-outline-blue {
+  background: transparent;
+  border-color: rgba(30,136,200,0.45);
+  color: var(--blue);
+}
+.btn-outline-blue:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+/* Acento — exclusivo para GamiAula/academia */
+.btn-orange { background: var(--orange); color: #fff; border-color: var(--orange); }
+.btn-orange:hover { background: #d68910; border-color: #d68910; }
+.btn-green  { background: var(--green);  color: #fff; border-color: var(--green);  }
+.btn-green:hover  { background: #35a05a; border-color: #35a05a; }
+
+/* Tamaño pequeño — para tarjetas de portafolio */
+.btn-sm {
+  padding: 7px 15px;
+  font-size: 0.81rem;
+  border-radius: 7px;
+  letter-spacing: 0.005em;
+}
+
+/* Tamaño grande — para CTAs principales del hero */
+.btn-lg {
+  padding: 13px 28px;
+  font-size: 0.94rem;
+  border-radius: 9px;
+}
+
+/* ═══════════════════════════════════════════
+   LAYOUT GENERAL DE SECCIONES
+═══════════════════════════════════════════ */
+.section-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.section-badge {
+  display: inline-block;
+  background: var(--lila);
+  color: var(--purple);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 12px;
+}
+.section-title { color: var(--purple); margin-bottom: 12px; }
+.section-desc { color: var(--mid); font-size: 1rem; max-width: 620px; margin: 0 auto; }
+
+/* ═══════════════════════════════════════════
+   CV DIGITAL
+═══════════════════════════════════════════ */
+.cv-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.cv-main {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 36px;
+  border: 1px solid var(--border);
+}
+.cv-main h3 {
+  color: var(--purple);
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--lila);
+}
+.cv-main p { line-height: 1.8; }
+
+.cv-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cv-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  border: 1px solid var(--border);
+}
+.cv-card h4 {
+  color: var(--purple);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 14px;
+}
+.cv-data-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 0.875rem;
+}
+.cv-data-row .label { color: var(--muted); min-width: 80px; flex-shrink: 0; }
+.cv-data-row .val   { color: var(--dark); font-weight: 500; }
+.cv-data-row .val a { color: var(--blue); text-decoration: none; }
+.cv-data-row .val a:hover { text-decoration: underline; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip {
+  background: var(--lila);
+  color: var(--purple);
+  border-radius: 99px;
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.chip.blue  { background: rgba(30,136,200,0.1); color: var(--blue-d); }
+.chip.green { background: rgba(70,185,108,0.12); color: #2e8a50; }
+.chip.orange{ background: rgba(243,156,18,0.12); color: #b37409; }
+
+/* ═══════════════════════════════════════════
+   TIMELINE EXPERIENCIA
+═══════════════════════════════════════════ */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 8px;
+  width: 3px; height: 100%;
+  background: linear-gradient(to bottom, var(--purple), var(--blue), var(--orange));
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 28px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -24px; top: 18px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--purple);
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px var(--purple);
+  transition: all .2s;
+}
+.timeline-item:first-child::before { background: var(--orange); box-shadow: 0 0 0 2px var(--orange); }
+.timeline-item:nth-child(2)::before { background: var(--orange); box-shadow: 0 0 0 2px var(--orange); }
+
+.exp-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px 24px 20px;
+  border: 1px solid var(--border);
+  transition: all .22s ease;
+}
+.exp-card:hover { box-shadow: var(--shadow-lg); transform: translateX(4px); }
+
+.exp-period {
+  display: inline-block;
+  background: var(--lila);
+  color: var(--purple);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 3px 11px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.exp-period.new-2026 {
+  background: rgba(243,156,18,0.12);
+  color: #7a4e00;
+  border: 1px solid rgba(243,156,18,0.25);
+}
+
+.exp-card h3 {
+  font-size: 1.02rem;
+  color: var(--dark);
+  margin-bottom: 5px;
+  line-height: 1.35;
+}
+.exp-org {
+  font-size: 0.875rem;
+  color: var(--blue-d);
+  font-weight: 500;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-left: 2px solid rgba(30,136,200,0.3);
+}
+.exp-desc { font-size: 0.875rem; color: var(--mid); line-height: 1.72; }
+
+/* ═══════════════════════════════════════════
+   FORMACIÓN
+═══════════════════════════════════════════ */
+.formation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.form-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--purple);
+  transition: all .22s ease;
+  position: relative;
+  overflow: hidden;
+}
+.form-card::after {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 80px; height: 80px;
+  background: var(--lila);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.form-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.form-card:nth-child(3n+2) { border-left-color: var(--blue); }
+.form-card:nth-child(3n) { border-left-color: var(--orange); }
+
+.form-degree {
+  font-family: var(--font-h);
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 7px;
+  line-height: 1.35;
+  position: relative;
+}
+.form-institution { font-size: 0.86rem; color: var(--blue-d); font-weight: 500; margin-bottom: 5px; }
+.form-period {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.form-icon {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+
+/* ═══════════════════════════════════════════
+   GAMIAULA SECTION
+═══════════════════════════════════════════ */
+.gamiaula-hero {
+  background: linear-gradient(135deg, var(--purple) 0%, #a040c0 50%, var(--blue) 100%);
+  border-radius: var(--radius-lg);
+  padding: 52px 48px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.gamiaula-hero::before {
+  content: '🎮';
+  position: absolute;
+  font-size: 12rem;
+  opacity: 0.06;
+  top: -20px; right: -20px;
+  line-height: 1;
+}
+.gamiaula-hero h2 { color: #fff; margin-bottom: 16px; }
+.gamiaula-hero p  { color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 620px; margin: 0 auto 28px; }
+.gamiaula-hero .hero-actions { justify-content: center; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.service-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: all .22s ease;
+}
+.service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+.service-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  display: block;
+}
+.service-card h4 { color: var(--purple); margin-bottom: 8px; font-size: 0.95rem; }
+.service-card p  { font-size: 0.87rem; }
+
+/* ═══════════════════════════════════════════
+   PORTAFOLIO
+═══════════════════════════════════════════ */
+.portfolio-cat {
+  margin-bottom: 52px;
+}
+.portfolio-cat-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.portfolio-cat-label h3 {
+  color: var(--purple);
+  font-size: 1.15rem;
+}
+.portfolio-cat-label::before {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: var(--lila);
+}
+.portfolio-cat-label::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: var(--lila);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: all .22s ease;
+}
+.project-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+
+.project-header {
+  padding: 20px 20px 14px;
+}
+.project-cat-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 99px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.tag-tools  { background: rgba(70,185,108,0.12); color: #2a7a45; }
+.tag-science{ background: rgba(30,136,200,0.1);  color: #1060a0; }
+.tag-case   { background: rgba(243,156,18,0.12); color: #8a5500; }
+
+.project-header h4 { color: var(--dark); font-size: 1rem; margin-bottom: 6px; }
+.project-header p  { font-size: 0.84rem; color: var(--muted); line-height: 1.6; }
+
+/* Marco tipo navegador */
+.browser-frame {
+  background: #1a1a2e;
+  border-radius: 0;
+}
+.browser-bar {
+  background: #2d2d44;
+  padding: 7px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.browser-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+}
+.browser-dot.red    { background: #ff5f56; }
+.browser-dot.yellow { background: #ffbd2e; }
+.browser-dot.green  { background: #27c93f; }
+.browser-url {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+  font-family: monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.browser-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #0d0d1a;
+}
+.browser-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.35);
+  font-size: 0.85rem;
+  font-family: var(--font-b);
+  text-align: center;
+  padding: 20px;
+}
+.placeholder-icon { font-size: 2.2rem; opacity: 0.5; }
+.browser-viewport iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.project-footer {
+  padding: 14px 20px 18px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ═══════════════════════════════════════════
+   CHARLAS
+═══════════════════════════════════════════ */
+.talks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+.talk-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: all .22s ease;
+}
+.talk-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+
+.yt-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #0a0a14;
+}
+.yt-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+
+.talk-body { padding: 20px; }
+.talk-num {
+  font-family: var(--font-h);
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.talk-body h4 {
+  color: var(--dark);
+  font-size: 1rem;
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+.talk-subtitle {
+  font-size: 0.82rem;
+  color: var(--blue);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.talk-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+
+/* ═══════════════════════════════════════════
+   CONTACTO
+═══════════════════════════════════════════ */
+.contact-hero {
+  background: linear-gradient(135deg, #fff 0%, var(--lila) 100%);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 52px 48px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.contact-hero h2 { color: var(--purple); margin-bottom: 16px; }
+.contact-hero p  { color: var(--mid); font-size: 1.05rem; max-width: 560px; margin: 0 auto 32px; }
+.contact-hero .hero-actions { justify-content: center; }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+.contact-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 20px;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: all .22s ease;
+}
+.contact-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.contact-card .ico { font-size: 2rem; margin-bottom: 12px; display: block; }
+.contact-card h4   { color: var(--dark); margin-bottom: 6px; font-size: 0.95rem; }
+.contact-card a    { color: var(--blue); font-size: 0.87rem; text-decoration: none; word-break: break-all; }
+.contact-card a:hover { text-decoration: underline; }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 24px 20px;
+  font-size: 0.82rem;
+}
+footer strong { color: rgba(255,255,255,0.8); }
+footer a { color: var(--purple-l); text-decoration: none; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-card  { max-width: 420px; margin: 0 auto; }
+  .cv-grid    { grid-template-columns: 1fr; }
+  .gamiaula-hero { padding: 36px 24px; }
+  .contact-hero  { padding: 36px 24px; }
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 40px 16px 60px; }
+  .section-wrap { padding: 40px 16px 60px; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .talks-grid     { grid-template-columns: 1fr; }
+  .formation-grid { grid-template-columns: 1fr; }
+  .services-grid  { grid-template-columns: repeat(2, 1fr); }
+  .hero-actions   { flex-direction: column; }
+  .browser-viewport { aspect-ratio: 16/10; }
+}
+
+/* ═══════════════════════════════════════════
+   ANIMACIONES
+═══════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp .5s ease both; }
+.fade-up-d1 { animation-delay: .1s; }
+.fade-up-d2 { animation-delay: .2s; }
+.fade-up-d3 { animation-delay: .3s; }
+.fade-up-d4 { animation-delay: .4s; }
+
+/* Scrollbar global */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--lila); }
+::-webkit-scrollbar-thumb { background: var(--purple-l); border-radius: 3px; }
+
+/* Divider */
+.divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--lila), transparent);
+  border: none;
+  margin: 36px 0;
+}
+
+/* Gradient strip top */
+.top-strip {
+  height: 4px;
+  background: linear-gradient(90deg, var(--purple), var(--blue), var(--green), var(--orange), var(--yellow));
+}
+
+/* ═══ BADGE 2026 ═══ */
+.badge-2026 {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(90deg, #F39C12, #F7C948);
+  color: #26223A;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 10px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+</style>
+</head>
+<body>
+
+<!-- Franja de color arriba -->
+<div class="top-strip"></div>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<nav class="navbar" role="navigation" aria-label="Navegación principal">
+  <div class="navbar-inner">
+    <div class="navbar-brand" onclick="showTab('inicio')" tabindex="0" onkeydown="if(event.key==='Enter')showTab('inicio')">
+      Nicolás <span>Espinoza</span>
+    </div>
+    <div class="nav-tabs-wrapper">
+      <div class="nav-tabs" role="tablist">
+        <button class="nav-tab active" onclick="showTab('inicio')"      role="tab" aria-selected="true">Inicio</button>
+        <button class="nav-tab"        onclick="showTab('cv')"          role="tab">CV Digital</button>
+        <button class="nav-tab"        onclick="showTab('experiencia')" role="tab">Experiencia</button>
+        <button class="nav-tab"        onclick="showTab('formacion')"   role="tab">Formación</button>
+        <button class="nav-tab"        onclick="showTab('gamiaula')"    role="tab">GamiAula</button>
+        <button class="nav-tab"        onclick="showTab('portafolio')"  role="tab">Portafolio</button>
+        <button class="nav-tab"        onclick="showTab('charlas')"     role="tab">Charlas</button>
+        <button class="nav-tab"        onclick="showTab('contacto')"    role="tab">Contacto</button>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="nav-hint">← Desliza para ver todas las secciones →</div>
+
+<!-- ═══════════════════════════════════════════
+     INICIO
+═══════════════════════════════════════════ -->
+<section id="tab-inicio" class="tab-section active" aria-label="Inicio">
+  <div class="hero">
+    <div class="hero-inner">
+      <!-- Columna izquierda -->
+      <div>
+        <div class="hero-badge fade-up">Valparaíso, Chile · Más de 10 años en educación</div>
+        <h1 class="hero-name fade-up fade-up-d1">
+          <span class="accent">Nicolás</span><br>Espinoza<br><span style="font-size:0.55em;color:var(--mid);font-weight:500;letter-spacing:0.01em;">González</span>
+        </h1>
+        <p class="hero-role fade-up fade-up-d2">
+          Profesor de Ciencias <span>·</span> Diseñador de experiencias de aprendizaje <span>·</span> Especialista en gamificación y neuroeducación
+        </p>
+        <p class="hero-desc fade-up fade-up-d3">
+          Creo que aprender puede ser una experiencia extraordinaria. Diseño aulas donde el <strong>juego, la narrativa y la ciencia</strong> se encuentran — porque cuando los estudiantes se enganchan de verdad, el aprendizaje se vuelve imparable.
+        </p>
+        <div class="hero-actions fade-up fade-up-d4">
+          <button class="btn btn-primary btn-lg" onclick="showTab('cv')">Ver CV Digital</button>
+          <button class="btn btn-blue btn-lg"    onclick="showTab('portafolio')">Explorar Portafolio</button>
+          <button class="btn btn-ghost btn-lg"   onclick="showTab('charlas')">Ver Charlas</button>
+          <button class="btn btn-outline btn-lg" onclick="showTab('contacto')">Contactar</button>
+        </div>
+      </div>
+      <!-- Tarjeta lateral — perfil personal -->
+      <div class="hero-card fade-up fade-up-d3">
+        <div class="hero-card-title">Perfil</div>
+        <div class="hero-card-item">
+          <div class="ico">📍</div>
+          <div><strong>Ubicación</strong> Valparaíso, Chile</div>
+        </div>
+        <div class="hero-card-item">
+          <div class="ico">🎓</div>
+          <div><strong>Área</strong> Pedagogía en Biología y Ciencias</div>
+        </div>
+        <div class="hero-card-item">
+          <div class="ico">🧩</div>
+          <div><strong>Especialidad</strong> Gamificación · ABJ · Neuroeducación</div>
+        </div>
+        <div class="hero-card-item">
+          <div class="ico">🤖</div>
+          <div><strong>Innovación</strong> IA aplicada a educación</div>
+        </div>
+        <div class="hero-card-item">
+          <div class="ico">✉️</div>
+          <div><strong>Contacto</strong> contacto@gamiaula.cl</div>
+        </div>
+        <hr class="divider" style="margin:18px 0 14px;">
+        <p style="font-size:0.8rem;color:var(--muted);text-align:center;margin-bottom:12px;">Fundador de <strong style="color:var(--purple);">GamiAula</strong> — laboratorio de innovación educativa</p>
+        <button class="btn btn-ghost" onclick="showTab('gamiaula')" style="width:100%;justify-content:center;font-size:0.85rem;">Conocer GamiAula →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CV DIGITAL
+═══════════════════════════════════════════ -->
+<section id="tab-cv" class="tab-section" aria-label="CV Digital">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-badge">CV Digital</span>
+      <h2 class="section-title">Trayectoria profesional, educativa y creativa</h2>
+      <p class="section-desc">Vinculada al diseño de experiencias de aprendizaje significativas.</p>
+    </div>
+
+    <div class="cv-grid">
+      <!-- Perfil principal -->
+      <div>
+        <div class="cv-main" style="margin-bottom:24px;">
+          <h3>📋 Perfil profesional</h3>
+          <p>Docente, coordinador académico y diseñador de experiencias de aprendizaje con más de 10 años de experiencia en educación escolar, formación docente, diseño curricular, gamificación, neuroeducación e innovación pedagógica. Su trabajo integra aula real, tecnología, narrativa, juego e inteligencia artificial para transformar procesos formativos en <strong>experiencias significativas</strong>.</p>
+        </div>
+
+        <!-- Competencias -->
+        <div class="cv-main">
+          <h3>⚡ Competencias clave</h3>
+          <div class="chips">
+            <span class="chip">Gamificación educativa</span>
+            <span class="chip">Aprendizaje Basado en Juegos</span>
+            <span class="chip">Neuroeducación</span>
+            <span class="chip blue">IA aplicada a educación</span>
+            <span class="chip blue">Diseño curricular</span>
+            <span class="chip blue">LMS / Moodle</span>
+            <span class="chip green">HTML / Experiencias interactivas</span>
+            <span class="chip green">Formación docente</span>
+            <span class="chip orange">Coordinación académica</span>
+            <span class="chip orange">Liderazgo educativo</span>
+            <span class="chip">Metodologías activas</span>
+            <span class="chip">ABP y proyectos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar datos -->
+      <div class="cv-sidebar">
+        <div class="cv-card">
+          <h4>Datos personales</h4>
+          <div class="cv-data-row"><span class="label">Nombre</span><span class="val">Nicolás Ignacio Espinoza González</span></div>
+          <div class="cv-data-row"><span class="label">Ubicación</span><span class="val">Valparaíso, Chile</span></div>
+          <div class="cv-data-row"><span class="label">Área</span><span class="val">Educación, gamificación, ABJ, neuroeducación e IA</span></div>
+          <div class="cv-data-row"><span class="label">Marca</span><span class="val">GamiAula</span></div>
+        </div>
+        <div class="cv-card">
+          <h4>Contacto</h4>
+          <div class="cv-data-row"><span class="label">Correo</span><span class="val"><a href="mailto:contacto@gamiaula.cl">contacto@gamiaula.cl</a></span></div>
+          <div class="cv-data-row"><span class="label">Instagram</span><span class="val"><a href="https://www.instagram.com/gamiaula" target="_blank" rel="noopener">@gamiaula</a></span></div>
+          <div class="cv-data-row"><span class="label">Web</span><span class="val"><a href="https://landing.gamiaula.com" target="_blank" rel="noopener">landing.gamiaula.com</a></span></div>
+          <div class="cv-data-row"><span class="label">WhatsApp</span><span class="val"><a href="https://wa.me/56926338643" target="_blank" rel="noopener">+56 9 2633 8643</a></span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <button class="btn btn-primary" onclick="showTab('experiencia')" style="justify-content:center;">Ver Experiencia</button>
+          <button class="btn btn-outline" onclick="showTab('formacion')"   style="justify-content:center;">Ver Formación</button>
+          <button class="btn btn-ghost"   onclick="showTab('portafolio')"  style="justify-content:center;">Explorar Portafolio</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     EXPERIENCIA
+═══════════════════════════════════════════ -->
+<section id="tab-experiencia" class="tab-section" aria-label="Experiencia profesional">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-badge">Trayectoria</span>
+      <h2 class="section-title">Experiencia profesional</h2>
+      <p class="section-desc">Más de una década diseñando, coordinando y facilitando experiencias de aprendizaje.</p>
+    </div>
+
+    <div class="timeline">
+
+      <!-- 2026 - U. Autónoma -->
+      <div class="timeline-item">
+        <div class="exp-card">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span class="exp-period new-2026">2026 – Presente</span>
+            <span class="badge-2026">Nuevo 2026</span>
+          </div>
+          <h3>Docente – Gamificación en Educación Superior</h3>
+          <div class="exp-org">Universidad Autónoma de Chile</div>
+          <p class="exp-desc">Asignatura de formación continua docente: Gamificación en Educación Superior. Rol orientado a formación docente, diseño de experiencias gamificadas, acompañamiento académico y aplicación de estrategias lúdicas en contextos de educación superior.</p>
+        </div>
+      </div>
+
+      <!-- 2026 - Cenco -->
+      <div class="timeline-item">
+        <div class="exp-card">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span class="exp-period new-2026">2026 – Presente</span>
+            <span class="badge-2026">Nuevo 2026</span>
+          </div>
+          <h3>Docente área Educación</h3>
+          <div class="exp-org">Centro de Formación Cenco / CFT Cenco</div>
+          <p class="exp-desc">Docente en el área de educación, aportando desde la formación pedagógica, innovación metodológica y experiencia en diseño de aprendizajes.</p>
+        </div>
+      </div>
+
+      <!-- 2016 - Pumahue -->
+      <div class="timeline-item">
+        <div class="exp-card">
+          <span class="exp-period">2016 – Presente</span>
+          <h3>Profesor de Ciencias Naturales y Biología</h3>
+          <div class="exp-org">Colegio Pumahue Curauma – Cognita</div>
+          <p class="exp-desc">Docente de enseñanza media en Ciencias Naturales y Biología. Diseño e implementación de experiencias basadas en gamificación, Aprendizaje Basado en Juegos, metodologías activas y uso de plataformas LMS.</p>
+        </div>
+      </div>
+
+      <!-- 2023 - Coord Diplomado GA+TIC+IA -->
+      <div class="timeline-item">
+        <div class="exp-card">
+          <span class="exp-period">2023 – Presente</span>
+          <h3>Coordinador Académico – Diplomado Internacional en Gamificación, TIC e Inteligencia Artificial</h3>
+          <div class="exp-org">Observatorio del Juego</div>
+          <p class="exp-desc">Coordinación académica integral, planificación estratégica, gestión de equipos docentes y rediseño curricular incorporando TIC e IA aplicada a educación.</p>
+        </div>
+      </div>
+
+      <!-- 2024 - Editor Inspiraplay -->
+      <div class="timeline-item">
+        <div class="exp-card">
+          <span class="exp-period">2024 – Presente</span>
+          <h3>Editor en Jefe – Revista Inspiraplay</h3>
+          <div class="exp-org">Docentes en Línea Latinoamérica</div>
+          <p class="exp-desc">Dirección editorial de revista especializada en gamificación educativa orientada a docentes latinoamericanos.</p>
+        </div>
+      </div>
+
+      <!-- 2025 - Coord Neuro + Gami -->
+      <div class="timeline-item">
+        <div class="exp-card">
+          <span class="exp-period">2025 – Presente</span>
+          <h3>Coordinador Académico – Diplomado Internacional en Neurociencia y Gamificación</h3>
+          <div class="exp-org">Docentes en Línea Latinoamérica</div>
+          <p class="exp-desc">Coordinación académica, diseño curricular y liderazgo de equipos docentes en programa de especialización internacional.</p>
+        </div>
+      </div>
+
+      <!-- GamiAula -->
+      <div class="timeline-item">
+        <div class="exp-card">
+          <span class="exp-period" style="background:linear-gradient(90deg,rgba(124,58,147,0.15),rgba(30,136,200,0.15));color:var(--purple-d);">Fundador – Continuo</span>
+          <h3>Fundador y Diseñador de Experiencias Educativas</h3>
+          <div class="exp-org">GamiAula</div>
+          <p class="exp-desc">Diseño de cursos, recursos gamificados, experiencias interactivas, charlas, asesorías y materiales para docentes e instituciones educativas. Construcción de comunidad educativa latinoamericana.</p>
+        </div>
+      </div>
+
+      <!-- 2021 - Coord Diplomado -->
+      <div class="timeline-item">
+        <div class="exp-card">
+          <span class="exp-period">2021 – 2023</span>
+          <h3>Coordinador Académico – Diplomado en Gamificación y Aprendizaje Lúdico</h3>
+          <div class="exp-org">Observatorio del Juego</div>
+          <p class="exp-desc">Articulación de contenidos, calendarización, gestión docente y consolidación del programa.</p>
+        </div>
+      </div>
+
+      <!-- 2019 - Diseñador contenidos -->
+      <div class="timeline-item">
+        <div class="exp-card">
+          <span class="exp-period">2019 – 2021</span>
+          <h3>Diseñador de Contenidos Académicos – Diplomado en Gamificación y Aprendizaje Lúdico</h3>
+          <div class="exp-org">Observatorio del Juego</div>
+          <p class="exp-desc">Diseño de materiales, estructura curricular y experiencias de aprendizaje lúdico.</p>
+        </div>
+      </div>
+
+      <!-- 2019 - Relator Gestión Didáctica -->
+      <div class="timeline-item">
+        <div class="exp-card">
+          <span class="exp-period">2019 – Presente</span>
+          <h3>Relator y Coach Educativo</h3>
+          <div class="exp-org">Gestión Didáctica</div>
+          <p class="exp-desc">Formación y acompañamiento docente en neuroeducación, gamificación, metodologías activas y diseño de experiencias.</p>
+        </div>
+      </div>
+
+      <!-- 2022 - ASEDH -->
+      <div class="timeline-item">
+        <div class="exp-card">
+          <span class="exp-period">2022</span>
+          <h3>Docente Especialista en Neurociencia Educativa</h3>
+          <div class="exp-org">ASEDH / IMCE</div>
+          <p class="exp-desc">Docencia en diplomatura de especialización en autorregulación en contextos educativos.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FORMACIÓN
+═══════════════════════════════════════════ -->
+<section id="tab-formacion" class="tab-section" aria-label="Formación académica">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-badge">Academia</span>
+      <h2 class="section-title">Formación académica y especialización</h2>
+      <p class="section-desc">Trayectoria de formación continua en educación, gamificación, neurociencia y liderazgo.</p>
+    </div>
+
+    <div class="formation-grid">
+
+      <div class="form-card">
+        <div class="form-icon">🎓</div>
+        <div class="form-degree">Pedagogía en Biología y Ciencias Naturales</div>
+        <div class="form-institution">Pontificia Universidad Católica de Valparaíso</div>
+        <div class="form-period">2011 – 2016</div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-icon">🧠</div>
+        <div class="form-degree">Doble Máster en Neuroeducación y Optimización de Capacidades + Dirección y Gestión de Centros Educativos</div>
+        <div class="form-institution">Universidad San Jorge de Zaragoza, España</div>
+        <div class="form-period">2024 – 2026</div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-icon">🎮</div>
+        <div class="form-degree">Máster Profesional en Gamificación Educativa</div>
+        <div class="form-institution">Universidad Internacional de La Rioja, España</div>
+        <div class="form-period">Desde septiembre 2025</div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-icon">🃏</div>
+        <div class="form-degree">Diplomado en Juego y Didáctica</div>
+        <div class="form-institution">OTEC JCCD Ltda. / SENCE</div>
+        <div class="form-period">2025 – 2026</div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-icon">🧩</div>
+        <div class="form-degree">Diplomado en Pedagogía y Lúdica</div>
+        <div class="form-institution">Politécnico de Colombia</div>
+        <div class="form-period">2022 – 2023</div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-icon">🏆</div>
+        <div class="form-degree">Diplomado en Liderazgo e Innovación para la Escuela del Futuro</div>
+        <div class="form-institution">Fundación Seminarium / Caja Los Andes</div>
+        <div class="form-period">2022</div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-icon">📐</div>
+        <div class="form-degree">Experto en Programación Didáctica y Metodologías Innovadoras</div>
+        <div class="form-institution">Universidad Pablo de Olavide</div>
+        <div class="form-period">2023 – 2024</div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-icon">⭐</div>
+        <div class="form-degree">Certificación ISTE Educator</div>
+        <div class="form-institution">International Society for Technology in Education</div>
+        <div class="form-period">Estándares ISTE para educadores</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     GAMIAULA
+═══════════════════════════════════════════ -->
+<section id="tab-gamiaula" class="tab-section" aria-label="GamiAula">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-badge">Marca educativa</span>
+      <h2 class="section-title">GamiAula</h2>
+    </div>
+
+    <div class="gamiaula-hero">
+      <h2>🎮 GamiAula: laboratorio de innovación educativa</h2>
+      <p>GamiAula es el espacio desde donde diseño, pruebo y comparto experiencias educativas basadas en gamificación, Aprendizaje Basado en Juegos, neuroeducación, inteligencia artificial y tecnología aplicada al aprendizaje.</p>
+      <div class="hero-actions" style="justify-content:center;flex-wrap:wrap;">
+        <a href="https://landing.gamiaula.com"           target="_blank" rel="noopener" class="btn btn-lg" style="background:#fff;color:var(--purple);border-color:#fff;">Visitar GamiAula</a>
+        <a href="https://www.instagram.com/gamiaula"     target="_blank" rel="noopener" class="btn btn-orange btn-lg">📸 Instagram</a>
+        <a href="mailto:contacto@gamiaula.cl"                                           class="btn btn-lg" style="background:rgba(255,255,255,0.12);color:#fff;border-color:rgba(255,255,255,0.35);">Escribir por correo</a>
+        <a href="https://wa.me/56926338643"              target="_blank" rel="noopener" class="btn btn-green btn-lg">💬 WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🎓</span>
+        <h4>Academia y cursos</h4>
+        <p>Cursos y diplomados en gamificación, ABJ y neuroeducación para docentes.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📦</span>
+        <h4>Recursos descargables</h4>
+        <p>Materiales listos para usar en el aula, plantillas y herramientas de diseño lúdico.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🚀</span>
+        <h4>Portafolio de experiencias</h4>
+        <p>Experiencias interactivas reales diseñadas y probadas en contextos educativos.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🎤</span>
+        <h4>Charlas y formación</h4>
+        <p>Charlas, webinars y talleres para instituciones, congresos y comunidades docentes.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🤝</span>
+        <h4>Asesorías institucionales</h4>
+        <p>Acompañamiento para colegios, universidades y organizaciones que quieren innovar pedagógicamente.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🌍</span>
+        <h4>Comunidad educativa</h4>
+        <p>Comunidad latinoamericana de docentes que apuestan por el aprendizaje lúdico y la innovación.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PORTAFOLIO
+═══════════════════════════════════════════ -->
+<section id="tab-portafolio" class="tab-section" aria-label="Portafolio de proyectos">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-badge">Portafolio vivo</span>
+      <h2 class="section-title">Experiencias interactivas en vivo</h2>
+      <p class="section-desc">Estas no son capturas de pantalla: son experiencias reales que puedes explorar directamente aquí.</p>
+    </div>
+
+    <!-- CATEGORÍA A -->
+    <div class="portfolio-cat">
+      <div class="portfolio-cat-label"><h3>🛠️ A. Herramientas para docentes</h3></div>
+      <div class="portfolio-grid">
+
+        <!-- Proyecto 1 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-cat-tag tag-tools">Herramienta docente</span>
+            <h4>Class Progress Board</h4>
+            <p>Panel de progreso para visualizar avance, equipos o estados dentro de una experiencia gamificada.</p>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dot red"></div>
+              <div class="browser-dot yellow"></div>
+              <div class="browser-dot green"></div>
+              <div class="browser-url">nespinozagonzalez-hub.github.io/class-progress-board/</div>
+            </div>
+            <div class="browser-viewport" id="vp-1">
+              <div class="browser-placeholder">
+                <span class="placeholder-icon">📊</span>
+                <span>Vista previa no cargada todavía.<br>Presiona <strong>"Cargar experiencia"</strong></span>
+              </div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <button class="btn btn-primary btn-sm" onclick="loadIframe('vp-1','https://nespinozagonzalez-hub.github.io/class-progress-board/')">▶ Cargar experiencia</button>
+            <a href="https://nespinozagonzalez-hub.github.io/class-progress-board/" target="_blank" rel="noopener" class="btn btn-outline-blue btn-sm">↗ Abrir completa</a>
+          </div>
+        </div>
+
+        <!-- Proyecto 2 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-cat-tag tag-tools">Herramienta docente</span>
+            <h4>Código Cero</h4>
+            <p>Experiencia narrativa interactiva basada en códigos, misiones y progresión.</p>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+              <div class="browser-url">nespinozagonzalez-hub.github.io/codigocero/</div>
+            </div>
+            <div class="browser-viewport" id="vp-2">
+              <div class="browser-placeholder"><span class="placeholder-icon">🔐</span><span>Vista previa no cargada todavía.<br>Presiona <strong>"Cargar experiencia"</strong></span></div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <button class="btn btn-primary btn-sm" onclick="loadIframe('vp-2','https://nespinozagonzalez-hub.github.io/codigocero/')">▶ Cargar experiencia</button>
+            <a href="https://nespinozagonzalez-hub.github.io/codigocero/" target="_blank" rel="noopener" class="btn btn-outline-blue btn-sm">↗ Abrir completa</a>
+          </div>
+        </div>
+
+        <!-- Proyecto 3 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-cat-tag tag-tools">Herramienta docente</span>
+            <h4>Navaja Suiza GamiAula</h4>
+            <p>Herramienta de apoyo para diseñar y organizar experiencias de gamificación.</p>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+              <div class="browser-url">nespinozagonzalez-hub.github.io/Navaja-suiza-gamiaula/</div>
+            </div>
+            <div class="browser-viewport" id="vp-3">
+              <div class="browser-placeholder"><span class="placeholder-icon">🔧</span><span>Vista previa no cargada todavía.<br>Presiona <strong>"Cargar experiencia"</strong></span></div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <button class="btn btn-primary btn-sm" onclick="loadIframe('vp-3','https://nespinozagonzalez-hub.github.io/Navaja-suiza-gamiaula/')">▶ Cargar experiencia</button>
+            <a href="https://nespinozagonzalez-hub.github.io/Navaja-suiza-gamiaula/" target="_blank" rel="noopener" class="btn btn-outline-blue btn-sm">↗ Abrir completa</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CATEGORÍA B -->
+    <div class="portfolio-cat">
+      <div class="portfolio-cat-label"><h3>🔬 B. Experiencias gamificadas de ciencias</h3></div>
+      <div class="portfolio-grid">
+
+        <!-- Proyecto 4 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-cat-tag tag-science">Ciencias gamificadas</span>
+            <h4>EduBreak Gases</h4>
+            <p>Breakout educativo centrado en contenidos de gases.</p>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+              <div class="browser-url">nespinozagonzalez-hub.github.io/edubreakGases/</div>
+            </div>
+            <div class="browser-viewport" id="vp-4">
+              <div class="browser-placeholder"><span class="placeholder-icon">💨</span><span>Vista previa no cargada todavía.<br>Presiona <strong>"Cargar experiencia"</strong></span></div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <button class="btn btn-primary btn-sm" onclick="loadIframe('vp-4','https://nespinozagonzalez-hub.github.io/edubreakGases/')">▶ Cargar experiencia</button>
+            <a href="https://nespinozagonzalez-hub.github.io/edubreakGases/" target="_blank" rel="noopener" class="btn btn-outline-blue btn-sm">↗ Abrir completa</a>
+          </div>
+        </div>
+
+        <!-- Proyecto 5 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-cat-tag tag-science">Ciencias gamificadas</span>
+            <h4>Expedición Gaia</h4>
+            <p>Experiencia científica gamificada sobre fotosíntesis, transporte vegetal y redes tróficas.</p>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+              <div class="browser-url">nespinozagonzalez-hub.github.io/gaia/</div>
+            </div>
+            <div class="browser-viewport" id="vp-5">
+              <div class="browser-placeholder"><span class="placeholder-icon">🌿</span><span>Vista previa no cargada todavía.<br>Presiona <strong>"Cargar experiencia"</strong></span></div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <button class="btn btn-primary btn-sm" onclick="loadIframe('vp-5','https://nespinozagonzalez-hub.github.io/gaia/')">▶ Cargar experiencia</button>
+            <a href="https://nespinozagonzalez-hub.github.io/gaia/" target="_blank" rel="noopener" class="btn btn-outline-blue btn-sm">↗ Abrir completa</a>
+          </div>
+        </div>
+
+        <!-- Proyecto 6 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-cat-tag tag-science">Ciencias gamificadas</span>
+            <h4>Sellos de la Vida</h4>
+            <p>Experiencia narrativa con desafíos de biología, progresión por actos y resolución de misiones.</p>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+              <div class="browser-url">nespinozagonzalez-hub.github.io/SellosdelaVida/</div>
+            </div>
+            <div class="browser-viewport" id="vp-6">
+              <div class="browser-placeholder"><span class="placeholder-icon">🌱</span><span>Vista previa no cargada todavía.<br>Presiona <strong>"Cargar experiencia"</strong></span></div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <button class="btn btn-primary btn-sm" onclick="loadIframe('vp-6','https://nespinozagonzalez-hub.github.io/SellosdelaVida/')">▶ Cargar experiencia</button>
+            <a href="https://nespinozagonzalez-hub.github.io/SellosdelaVida/" target="_blank" rel="noopener" class="btn btn-outline-blue btn-sm">↗ Abrir completa</a>
+          </div>
+        </div>
+
+        <!-- Proyecto 7 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-cat-tag tag-science">Ciencias gamificadas</span>
+            <h4>Protocolo Escudo Roto</h4>
+            <p>Experiencia tipo protocolo/misión con estética narrativa y toma de decisiones.</p>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+              <div class="browser-url">nespinozagonzalez-hub.github.io/ProtocoloEscudoroto/</div>
+            </div>
+            <div class="browser-viewport" id="vp-7">
+              <div class="browser-placeholder"><span class="placeholder-icon">🛡️</span><span>Vista previa no cargada todavía.<br>Presiona <strong>"Cargar experiencia"</strong></span></div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <button class="btn btn-primary btn-sm" onclick="loadIframe('vp-7','https://nespinozagonzalez-hub.github.io/ProtocoloEscudoroto/')">▶ Cargar experiencia</button>
+            <a href="https://nespinozagonzalez-hub.github.io/ProtocoloEscudoroto/" target="_blank" rel="noopener" class="btn btn-outline-blue btn-sm">↗ Abrir completa</a>
+          </div>
+        </div>
+
+        <!-- Proyecto 8 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-cat-tag tag-science">Ciencias gamificadas</span>
+            <h4>Caso Violeta / Caso 3° Medio</h4>
+            <p>Simulación narrativa asociada a neurorespuesta, comunicación neuronal y toma de decisiones.</p>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+              <div class="browser-url">nespinozagonzalez-hub.github.io/caso3-edo-medio/</div>
+            </div>
+            <div class="browser-viewport" id="vp-8">
+              <div class="browser-placeholder"><span class="placeholder-icon">🧠</span><span>Vista previa no cargada todavía.<br>Presiona <strong>"Cargar experiencia"</strong></span></div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <button class="btn btn-primary btn-sm" onclick="loadIframe('vp-8','https://nespinozagonzalez-hub.github.io/caso3-edo-medio/')">▶ Cargar experiencia</button>
+            <a href="https://nespinozagonzalez-hub.github.io/caso3-edo-medio/" target="_blank" rel="noopener" class="btn btn-outline-blue btn-sm">↗ Abrir completa</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CATEGORÍA C -->
+    <div class="portfolio-cat">
+      <div class="portfolio-cat-label"><h3>🔮 C. Simulaciones narrativas y casos</h3></div>
+      <div class="portfolio-grid">
+
+        <!-- Proyecto 9 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-cat-tag tag-case">Simulación narrativa</span>
+            <h4>Caso Mateo</h4>
+            <p>Caso interactivo con toma de decisiones y análisis progresivo.</p>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+              <div class="browser-url">nespinozagonzalez-hub.github.io/Caso-mateo-v2/</div>
+            </div>
+            <div class="browser-viewport" id="vp-9">
+              <div class="browser-placeholder"><span class="placeholder-icon">🔍</span><span>Vista previa no cargada todavía.<br>Presiona <strong>"Cargar experiencia"</strong></span></div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <button class="btn btn-primary btn-sm" onclick="loadIframe('vp-9','https://nespinozagonzalez-hub.github.io/Caso-mateo-v2/')">▶ Cargar experiencia</button>
+            <a href="https://nespinozagonzalez-hub.github.io/Caso-mateo-v2/" target="_blank" rel="noopener" class="btn btn-outline-blue btn-sm">↗ Abrir completa</a>
+          </div>
+        </div>
+
+        <!-- Proyecto 10 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-cat-tag tag-case">Simulación narrativa</span>
+            <h4>Caso Rosa</h4>
+            <p>Simulación clínica/narrativa vinculada al análisis de caso, metabolismo y salud.</p>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+              <div class="browser-url">nespinozagonzalez-hub.github.io/caso-rosa-final/</div>
+            </div>
+            <div class="browser-viewport" id="vp-10">
+              <div class="browser-placeholder"><span class="placeholder-icon">🌸</span><span>Vista previa no cargada todavía.<br>Presiona <strong>"Cargar experiencia"</strong></span></div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <button class="btn btn-primary btn-sm" onclick="loadIframe('vp-10','https://nespinozagonzalez-hub.github.io/caso-rosa-final/')">▶ Cargar experiencia</button>
+            <a href="https://nespinozagonzalez-hub.github.io/caso-rosa-final/" target="_blank" rel="noopener" class="btn btn-outline-blue btn-sm">↗ Abrir completa</a>
+          </div>
+        </div>
+
+        <!-- Proyecto 11 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-cat-tag tag-case">Simulación narrativa</span>
+            <h4>Caso Quimera</h4>
+            <p>Experiencia narrativa de investigación, decisiones y resolución de desafíos.</p>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+              <div class="browser-url">nespinozagonzalez-hub.github.io/casoquimera/</div>
+            </div>
+            <div class="browser-viewport" id="vp-11">
+              <div class="browser-placeholder"><span class="placeholder-icon">🐉</span><span>Vista previa no cargada todavía.<br>Presiona <strong>"Cargar experiencia"</strong></span></div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <button class="btn btn-primary btn-sm" onclick="loadIframe('vp-11','https://nespinozagonzalez-hub.github.io/casoquimera/')">▶ Cargar experiencia</button>
+            <a href="https://nespinozagonzalez-hub.github.io/casoquimera/" target="_blank" rel="noopener" class="btn btn-outline-blue btn-sm">↗ Abrir completa</a>
+          </div>
+        </div>
+
+        <!-- Proyecto 12 -->
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-cat-tag tag-case">Simulación narrativa</span>
+            <h4>Bestiarium</h4>
+            <p>Sistema tipo colección/captura de criaturas para gamificar asignaturas mediante códigos, progreso y desbloqueo.</p>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+              <div class="browser-url">nespinozagonzalez-hub.github.io/bestiarum/</div>
+            </div>
+            <div class="browser-viewport" id="vp-12">
+              <div class="browser-placeholder"><span class="placeholder-icon">📖</span><span>Vista previa no cargada todavía.<br>Presiona <strong>"Cargar experiencia"</strong></span></div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <button class="btn btn-primary btn-sm" onclick="loadIframe('vp-12','https://nespinozagonzalez-hub.github.io/bestiarum/')">▶ Cargar experiencia</button>
+            <a href="https://nespinozagonzalez-hub.github.io/bestiarum/" target="_blank" rel="noopener" class="btn btn-outline-blue btn-sm">↗ Abrir completa</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CHARLAS
+═══════════════════════════════════════════ -->
+<section id="tab-charlas" class="tab-section" aria-label="Charlas">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-badge">Charlas y conferencias</span>
+      <h2 class="section-title">Charlas en vivo</h2>
+      <p class="section-desc">Conferencias, masterclasses y seminarios sobre gamificación, neuroeducación e innovación pedagógica.</p>
+    </div>
+
+    <div class="talks-grid">
+
+      <!-- Charla 1 -->
+      <div class="talk-card">
+        <div class="yt-frame">
+          <iframe src="https://www.youtube.com/embed/Z9NpC7Pukw4" title="Gamificación con Inteligencia Artificial" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="talk-body">
+          <div class="talk-num">🎤 Charla 01</div>
+          <h4>Gamificación con Inteligencia Artificial</h4>
+          <div class="talk-subtitle">Cómo integrar IA en el diseño de experiencias lúdicas</div>
+          <p class="talk-desc">Abordo la pregunta inevitable: ¿cómo puede la IA potenciar la gamificación sin reemplazar el criterio pedagógico? Explico cómo usar herramientas de IA para diseñar narrativas más profundas y optimizar la planificación docente. La IA no diseña por nosotros: nos amplifica.</p>
+          <a href="https://www.youtube.com/live/Z9NpC7Pukw4?si=wKPzHv64U5ZpbDLs" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Ver en YouTube</a>
+        </div>
+      </div>
+
+      <!-- Charla 2 -->
+      <div class="talk-card">
+        <div class="yt-frame">
+          <iframe src="https://www.youtube.com/embed/eI1ffgcGb1U" title="Tendencias en Gamificación Educativa" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="talk-body">
+          <div class="talk-num">🎤 Charla 02</div>
+          <h4>Tendencias en Gamificación Educativa</h4>
+          <div class="talk-subtitle">Charla Congreso Educadores Lúdicos – Observatorio del Juego</div>
+          <p class="talk-desc">Comparto las claves actuales de la gamificación educativa. No hablo de puntos ni medallas sueltas: hablo de diseño con sentido. Experiencias inmersivas donde el estudiante tenga agencia, propósito y participación activa.</p>
+          <a href="https://youtu.be/eI1ffgcGb1U?si=VVGiYnmRQa_ovKmk" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Ver en YouTube</a>
+        </div>
+      </div>
+
+      <!-- Charla 3 -->
+      <div class="talk-card">
+        <div class="yt-frame">
+          <iframe src="https://www.youtube.com/embed/CVKv1HuzOtw" title="Neurodidáctica y Gamificación" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="talk-body">
+          <div class="talk-num">🎤 Charla 03</div>
+          <h4>Neurodidáctica y Gamificación</h4>
+          <div class="talk-subtitle">Cómo el diseño lúdico dialoga con el cerebro</div>
+          <p class="talk-desc">Conecto neurodidáctica y gamificación. Explico cómo motivación, emoción, atención y memoria pueden integrarse conscientemente en experiencias lúdicas. La narrativa, el desafío progresivo y la retroalimentación inmediata impactan directamente en los procesos cognitivos.</p>
+          <a href="https://youtu.be/CVKv1HuzOtw?si=gt2iFtUffKeWnFxp" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Ver en YouTube</a>
+        </div>
+      </div>
+
+      <!-- Charla 4 -->
+      <div class="talk-card">
+        <div class="yt-frame">
+          <iframe src="https://www.youtube.com/embed/oxmyFzec7SM" title="Gamificación en educación online" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="talk-body">
+          <div class="talk-num">🎤 Charla 04</div>
+          <h4>Gamificación aplicada al aprendizaje en tiempos de educación online</h4>
+          <div class="talk-subtitle">Seminario online – Observatorio del Juego</div>
+          <p class="talk-desc">Cuando el aula se trasladó a la pantalla: cómo adaptar la gamificación al entorno online sin caer en dinámicas superficiales. Estructuras claras de progreso, narrativa en plataformas digitales e interacción significativa a distancia.</p>
+          <a href="https://www.youtube.com/live/oxmyFzec7SM?si=st-MzlmWPS49diHe" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Ver en YouTube</a>
+        </div>
+      </div>
+
+      <!-- Charla 5 -->
+      <div class="talk-card">
+        <div class="yt-frame">
+          <iframe src="https://www.youtube.com/embed/qZRK8roM0yg" title="MasterClass Lanzamiento GamiAula" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="talk-body">
+          <div class="talk-num">🎤 MasterClass</div>
+          <h4>MasterClass – Lanzamiento GamiAula</h4>
+          <div class="talk-subtitle">Gamificación, ABJ, juego serio y mecánicas de juegos de mesa aplicadas al aula</div>
+          <p class="talk-desc">La gamificación no se trata de puntos ni insignias: se trata de diseñar experiencias. Exploramos cómo usar mecánicas de juegos de mesa para transformar el aprendizaje en algo significativo, activo y memorable.</p>
+          <a href="https://youtu.be/qZRK8roM0yg?si=TiWksTa_iwIZ7y1T" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Ver en YouTube</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CONTACTO
+═══════════════════════════════════════════ -->
+<section id="tab-contacto" class="tab-section" aria-label="Contacto">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-badge">Contacto</span>
+    </div>
+
+    <div class="contact-hero">
+      <h2>¿Diseñamos una experiencia juntos?</h2>
+      <p>Desde GamiAula desarrollamos charlas, cursos, asesorías, recursos gamificados y experiencias de aprendizaje para docentes, instituciones y comunidades educativas.</p>
+      <div class="hero-actions" style="justify-content:center;flex-wrap:wrap;">
+        <a href="mailto:contacto@gamiaula.cl"                                           class="btn btn-primary btn-lg">Enviar correo</a>
+        <a href="https://wa.me/56926338643"              target="_blank" rel="noopener" class="btn btn-outline btn-lg">Escribir por WhatsApp</a>
+        <a href="https://landing.gamiaula.com"           target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Visitar GamiAula</a>
+        <a href="https://www.instagram.com/gamiaula"     target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Ver Instagram</a>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <span class="ico">✉️</span>
+        <h4>Correo electrónico</h4>
+        <a href="mailto:contacto@gamiaula.cl">contacto@gamiaula.cl</a>
+      </div>
+      <div class="contact-card">
+        <span class="ico">💬</span>
+        <h4>WhatsApp</h4>
+        <a href="https://wa.me/56926338643" target="_blank" rel="noopener">+56 9 2633 8643</a>
+      </div>
+      <div class="contact-card">
+        <span class="ico">📸</span>
+        <h4>Instagram</h4>
+        <a href="https://www.instagram.com/gamiaula" target="_blank" rel="noopener">@gamiaula</a>
+      </div>
+      <div class="contact-card">
+        <span class="ico">🌐</span>
+        <h4>Sitio web GamiAula</h4>
+        <a href="https://landing.gamiaula.com" target="_blank" rel="noopener">landing.gamiaula.com</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <strong>Nicolás Espinoza</strong> · <a href="https://landing.gamiaula.com" target="_blank" rel="noopener">GamiAula</a> · Valparaíso, Chile<br>
+  <span style="font-size:0.75rem;">Diseño de experiencias de aprendizaje gamificadas · <a href="mailto:contacto@gamiaula.cl">contacto@gamiaula.cl</a></span>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
+<script>
+// Sistema de pestañas
+function showTab(id) {
+  document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected','false');
+  });
+
+  const section = document.getElementById('tab-' + id);
+  if (section) {
+    section.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  const map = { inicio:0, cv:1, experiencia:2, formacion:3, gamiaula:4, portafolio:5, charlas:6, contacto:7 };
+  const tabs = document.querySelectorAll('.nav-tab');
+  const idx = map[id];
+  if (idx !== undefined && tabs[idx]) {
+    tabs[idx].classList.add('active');
+    tabs[idx].setAttribute('aria-selected','true');
+    // Scroll del nav-tabs hacia el tab activo
+    tabs[idx].scrollIntoView({ inline: 'center', behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Ocultar hint de navegación tras primera interacción
+  const hint = document.querySelector('.nav-hint');
+  if (hint) hint.style.display = 'none';
+
+  requestAnimationFrame(() => {
+    const s = document.getElementById('tab-' + id);
+    if (!s) return;
+    s.style.animation = 'none';
+    void s.offsetWidth;
+    s.style.animation = 'fadeUp .38s ease both';
+  });
+}
+
+// Carga diferida de iframes (portafolio)
+function loadIframe(containerId, url) {
+  const container = document.getElementById(containerId);
+  if (!container || container.querySelector('iframe')) return;
+  container.innerHTML = '';
+  const iframe = document.createElement('iframe');
+  iframe.src = url;
+  iframe.loading = 'lazy';
+  iframe.allow = 'fullscreen';
+  iframe.setAttribute('allowfullscreen', '');
+  iframe.title = 'Experiencia interactiva';
+  iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;';
+  container.appendChild(iframe);
+}
+
+// Ocultar hint tras deslizar manualmente el nav
+const navTabsEl = document.querySelector('.nav-tabs');
+if (navTabsEl) {
+  navTabsEl.addEventListener('scroll', function onScroll() {
+    const hint = document.querySelector('.nav-hint');
+    if (hint) hint.style.display = 'none';
+    navTabsEl.removeEventListener('scroll', onScroll);
+  }, { passive: true });
+}
+</script>
+
+</body>
+</html>
