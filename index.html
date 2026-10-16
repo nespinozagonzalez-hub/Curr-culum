@@ -1005,6 +1005,35 @@ footer a { color: var(--purple-l); text-decoration: none; }
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
+
+/* Portafolio académico 2026 */
+.skip-link{position:fixed;top:-70px;left:12px;z-index:3000;padding:12px;background:white;color:#26223a;border:2px solid #7c3a93;border-radius:8px}.skip-link:focus{top:8px}
+:focus-visible{outline:3px solid #db9316;outline-offset:3px}
+.hero{background:radial-gradient(circle at 80% 15%,rgba(124,58,147,.12),transparent 45%),linear-gradient(120deg,#fdf8ff,#fff 58%,#edf6ff)}
+.hero-role{line-height:1.65;font-weight:600}
+.new-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-bottom:38px}
+.new-card{background:#fff;border:1px solid var(--border);box-shadow:var(--shadow);border-radius:var(--radius-lg);padding:28px;min-width:0}
+.new-card h3{font-size:1.17rem;margin:11px 0;color:var(--dark)}
+.new-card p{font-size:.91rem;line-height:1.75;margin-bottom:15px}
+.new-card a{color:var(--blue-d);text-decoration:none;font-weight:700}
+.new-card a:hover{text-decoration:underline}.new-card small{display:block;color:var(--muted);margin-top:12px}
+.new-label{font-size:.73rem;letter-spacing:.07em;font-weight:800;color:var(--purple);text-transform:uppercase}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
+.metrics article{padding:24px 19px;background:#fff;border-radius:var(--radius-lg);border:1px solid var(--border)}
+.metrics strong{font-family:var(--font-h);font-size:2.3rem;line-height:1;color:var(--purple)}
+.metrics h3{font-size:.94rem;margin:14px 0 9px}.metrics p{font-size:.82rem}
+.featured-title{margin-bottom:24px}.featured-title h3{font-size:1.75rem;margin-bottom:8px}
+.featured .new-card{padding:0 0 24px;overflow:hidden}
+.featured .new-card>h3,.featured .new-card>p,.featured .new-card>a{margin-left:24px;margin-right:24px}
+.featured .new-card>h3{margin-top:22px}
+.project-art{height:158px;padding:16px 22px;display:flex;align-items:flex-start;justify-content:space-between;color:white;overflow:hidden}
+.project-art span{font-size:.75rem;font-weight:800;letter-spacing:.12em}.project-art b{font-size:6.7rem;line-height:1;font-family:Georgia,serif;font-weight:400;opacity:.77}
+.art-purple{background:linear-gradient(125deg,#302348,#88569c)}.art-teal{background:linear-gradient(125deg,#174f59,#56a99d)}.art-dark{background:linear-gradient(125deg,#1d1d2b,#614346)}.art-blue{background:linear-gradient(125deg,#22466c,#6995bb)}
+@media(max-width:1050px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:690px){.new-grid{grid-template-columns:1fr}.new-card{padding:22px}.metrics{gap:10px}.metrics article{padding:19px 14px}.metrics strong{font-size:1.9rem}.featured-title h3{font-size:1.45rem}}
+@media(max-width:360px){.metrics{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@media print{.navbar,.nav-hint,.top-strip,.skip-link,.hero-actions{display:none!important}.tab-section{display:block!important;break-after:page}.new-card,.metrics article{box-shadow:none;break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -1388,6 +1417,18 @@ footer a { color: var(--purple-l); text-decoration: none; }
 <!-- ═══════════════════════════════════════════
      GAMIAULA
 ═══════════════════════════════════════════ -->
+<section id="tab-investigacion" class="tab-section" aria-label="Investigación">
+<div class="section-wrap"><div class="section-header"><span class="section-badge">Investigación</span><h2 class="section-title">De la práctica a la investigación aplicada</h2><p class="section-desc">Gamificación fundamentada, diseño metodológico y experiencias educativas que permiten explorar nuevas preguntas de investigación.</p></div>
+<div class="new-grid">
+<article class="new-card"><span class="new-label">Tesis de máster · 2026</span><h3>Buscadores de la Gamificación Perdida</h3><p>Trabajo centrado en una revisión metodológica y en el diseño de una experiencia gamificada con narrativa, misiones, progresión y toma de decisiones.</p><a href="https://nespinozagonzalez-hub.github.io/misiones/" target="_blank" rel="noopener noreferrer">Explorar prototipo ↗</a></article>
+<article class="new-card"><span class="new-label">Congreso · propuesta aceptada</span><h3>Congreso Nodos</h3><p>Propuesta aceptada para participación académica. Se actualizará con datos de presentación y material público cuando corresponda.</p><small>Estado: aceptada; no se indica como ponencia realizada.</small></article>
+<article class="new-card"><span class="new-label">Producción científica · planificación</span><h3>Artículos derivados de la tesis</h3><p>Líneas de trabajo proyectadas sobre fundamentos metodológicos, diseño de experiencias y evaluación de propuestas gamificadas.</p><small>En preparación: no son publicaciones aceptadas.</small></article>
+<article class="new-card"><span class="new-label">Proyección académica</span><h3>Continuidad doctoral</h3><p>Exploración de programas doctorales y de una eventual ruta por compendio de publicaciones en Chile.</p><small>Etapa de planificación, no admisión doctoral.</small></article></div></div></section>
+<section id="tab-impacto" class="tab-section" aria-label="Resultados e impacto">
+<div class="section-wrap"><div class="section-header"><span class="section-badge">Evidencias</span><h2 class="section-title">Resultados de trabajo y productos educativos</h2><p class="section-desc">Indicadores contextualizados, sin confundir entregas o participación con efectos de aprendizaje medidos.</p></div>
+<div class="metrics"><article><strong>10+</strong><h3>Años de experiencia</h3><p>Docencia, formación y coordinación.</p></article><article><strong>33</strong><h3>Participantes</h3><p>Cohorte 2026 de diplomado en Gamificación e IA.</p></article><article><strong>26/33</strong><h3>Entregas completas</h3><p>Cumplieron los requerimientos de la cohorte reportada.</p></article><article><strong>12+</strong><h3>Experiencias digitales</h3><p>Portafolio de proyectos y prototipos.</p></article></div>
+<div class="new-card" style="margin-top:26px"><h3>De la idea a la implementación</h3><p>Diseño pedagógico y curricular, narrativas, prototipos HTML/CSS/JavaScript, integración con LMS, acompañamiento docente y revisión de la experiencia. Los resultados de aprendizaje requieren evaluaciones específicas para ser reportados como impactos.</p><button class="btn btn-primary" onclick="showTab('portafolio')">Explorar proyectos</button></div>
+</div></section>
 <section id="tab-gamiaula" class="tab-section" aria-label="GamiAula">
   <div class="section-wrap">
     <div class="section-header">
@@ -1454,7 +1495,14 @@ footer a { color: var(--purple-l); text-decoration: none; }
     </div>
 
     <!-- CATEGORÍA A -->
-    <div class="portfolio-cat">
+    <div class="featured-title"><span class="section-badge">Selección 2026</span><h3>Proyectos destacados</h3><p>Una muestra de trabajo que conecta investigación, narrativa, diseño instruccional y tecnología educativa.</p></div>
+<div class="new-grid featured">
+<article class="new-card"><div class="project-art art-purple"><span>01 / INVESTIGACIÓN</span><b>◆</b></div><h3>Buscadores de la Gamificación Perdida</h3><p>Misiones, narrativa y toma de decisiones en un entorno de aprendizaje gamificado.</p><a href="https://nespinozagonzalez-hub.github.io/misiones/" target="_blank" rel="noopener noreferrer">Explorar experiencia ↗</a></article>
+<article class="new-card"><div class="project-art art-teal"><span>02 / GAMIFICACIÓN</span><b>✳</b></div><h3>BioDex</h3><p>Criaturas coleccionables, retos curriculares, inventario y progresión didáctica.</p><a href="https://nespinozagonzalez-hub.github.io/biodex/" target="_blank" rel="noopener noreferrer">Abrir BioDex ↗</a></article>
+<article class="new-card"><div class="project-art art-dark"><span>03 / INTERACTIVIDAD</span><b>♜</b></div><h3>Bestiarium</h3><p>Bestiario interactivo con desafíos, coleccionables y progresión.</p><a href="https://nespinozagonzalez-hub.github.io/bestiarum/" target="_blank" rel="noopener noreferrer">Abrir Bestiarium ↗</a></article>
+<article class="new-card"><div class="project-art art-blue"><span>04 / FORMACIÓN</span><b>⌘</b></div><h3>Gamificación de 0 a 100</h3><p>Ruta formativa, módulos y experiencias para desarrollar competencias docentes.</p><a href="https://nespinozagonzalez-hub.github.io/introGami/" target="_blank" rel="noopener noreferrer">Ver introducción ↗</a></article>
+</div>
+<div class="portfolio-cat">
       <div class="portfolio-cat-label"><h3>🛠️ A. Herramientas para docentes</h3></div>
       <div class="portfolio-grid">
 
@@ -1904,67 +1952,22 @@ footer a { color: var(--purple-l); text-decoration: none; }
      JAVASCRIPT
 ═══════════════════════════════════════════ -->
 <script>
-// Sistema de pestañas
-function showTab(id) {
-  document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t => {
-    t.classList.remove('active');
-    t.setAttribute('aria-selected','false');
-  });
-
-  const section = document.getElementById('tab-' + id);
-  if (section) {
-    section.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  const map = { inicio:0, cv:1, experiencia:2, formacion:3, gamiaula:4, portafolio:5, charlas:6, contacto:7 };
-  const tabs = document.querySelectorAll('.nav-tab');
-  const idx = map[id];
-  if (idx !== undefined && tabs[idx]) {
-    tabs[idx].classList.add('active');
-    tabs[idx].setAttribute('aria-selected','true');
-    // Scroll del nav-tabs hacia el tab activo
-    tabs[idx].scrollIntoView({ inline: 'center', behavior: 'smooth', block: 'nearest' });
-  }
-
-  // Ocultar hint de navegación tras primera interacción
-  const hint = document.querySelector('.nav-hint');
-  if (hint) hint.style.display = 'none';
-
-  requestAnimationFrame(() => {
-    const s = document.getElementById('tab-' + id);
-    if (!s) return;
-    s.style.animation = 'none';
-    void s.offsetWidth;
-    s.style.animation = 'fadeUp .38s ease both';
-  });
+const tabs=[...document.querySelectorAll('.nav-tab')];
+const ids=tabs.map(b=>(b.getAttribute('onclick').match(/showTab\('([^']+)'\)/)||[])[1]);
+tabs.forEach((b,i)=>{const id=ids[i],p=document.getElementById('tab-'+id);if(!p)return;b.id='nav-'+id;b.setAttribute('aria-controls',p.id);b.setAttribute('aria-selected',i===0?'true':'false');b.tabIndex=i===0?0:-1;p.setAttribute('role','tabpanel');p.setAttribute('aria-labelledby',b.id);});
+function showTab(id,updateHash=true){
+ if(!ids.includes(id))return;
+ document.querySelectorAll('.tab-section').forEach(s=>{const on=s.id==='tab-'+id;s.classList.toggle('active',on);s.setAttribute('aria-hidden',String(!on));});
+ tabs.forEach((b,i)=>{const on=ids[i]===id;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;if(on)b.scrollIntoView({inline:'nearest',block:'nearest'});});
+ if(updateHash&&location.hash!=='#'+id)history.replaceState(null,'','#'+id);
+ const h=document.querySelector('.nav-hint');if(h)h.style.display='none';
+ window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
 }
-
-// Carga diferida de iframes (portafolio)
-function loadIframe(containerId, url) {
-  const container = document.getElementById(containerId);
-  if (!container || container.querySelector('iframe')) return;
-  container.innerHTML = '';
-  const iframe = document.createElement('iframe');
-  iframe.src = url;
-  iframe.loading = 'lazy';
-  iframe.allow = 'fullscreen';
-  iframe.setAttribute('allowfullscreen', '');
-  iframe.title = 'Experiencia interactiva';
-  iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;';
-  container.appendChild(iframe);
-}
-
-// Ocultar hint tras deslizar manualmente el nav
-const navTabsEl = document.querySelector('.nav-tabs');
-if (navTabsEl) {
-  navTabsEl.addEventListener('scroll', function onScroll() {
-    const hint = document.querySelector('.nav-hint');
-    if (hint) hint.style.display = 'none';
-    navTabsEl.removeEventListener('scroll', onScroll);
-  }, { passive: true });
-}
+tabs.forEach((b,i)=>b.addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;e.preventDefault();const n=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[n].focus();showTab(ids[n]);}));
+function syncHash(){const id=decodeURIComponent(location.hash.slice(1)).replace(/^tab-/,'');if(ids.includes(id))showTab(id,false)}
+addEventListener('hashchange',syncHash);if(location.hash)syncHash();
+function loadIframe(containerId,url){const c=document.getElementById(containerId);if(!c||c.querySelector('iframe'))return;let u;try{u=new URL(url,location.href)}catch{return}if(!['http:','https:'].includes(u.protocol))return;c.replaceChildren();const f=document.createElement('iframe');f.src=u.href;f.loading='lazy';f.allow='fullscreen';f.allowFullscreen=true;f.title='Vista previa interactiva';f.style.cssText='width:100%;height:100%;border:none';c.appendChild(f)}
+const nav=document.querySelector('.nav-tabs');if(nav)nav.addEventListener('scroll',()=>{const h=document.querySelector('.nav-hint');if(h)h.style.display='none'},{passive:true});
 </script>
 
 </body>
